@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-c8n#0jugc_^+f#b$$di6wz)8@=8z#=1h6(=k@_c8@7jqtzprhb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['novidus-interview.onrender.com']
+ALLOWED_HOSTS = ['novidus-interview.onrender.com','*']
 
 
 # Application definition
