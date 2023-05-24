@@ -1,0 +1,54 @@
+{% extends "backend/base.html" %}
+{% load static %}
+{% block content %}
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Add New Product</a>
+                </li>
+                <li><i class='bx bx-chevron-right' ></i></li>
+                <li>
+                    <a class="active" href="#">Add Products</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="btn-download">
+            <i class='bx bxs-cloud-download' ></i>
+            <span class="text">Download PDF</span>
+        </a>
+    </div>
+
+    
+
+    <form action="" method="POST" enctype="multipart/form-data" class="product_form">
+        {% csrf_token %}
+        <div class="input_div name">
+            <label for="">Product Name</label>
+            {{form.name}}
+        </div>
+        <div class="input_div price">
+            <label for="">Product Price</label>
+            {{form.price}}
+        </div>
+        <div class="img-box">
+            <div style="background: url('{{product.photo.url}}');" id="imagePreview"></div>
+            <input type="file" name="photo" accept="image/*" required="" id="id_photo">
+        </div>
+        <div class="input_div description">
+            <label for="">Product Description</label>
+            {{form.description}}
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    
+</main>
+
+<script>
+    document.getElementById('add_product').classList.add('active')
+</script>
+{% endblock content %}

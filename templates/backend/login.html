@@ -19,14 +19,17 @@
 
 
     <div class="container">
-        <form action="">
+        <form method="post" action="{% url 'admin-login' %}">
+            {% csrf_token %}
             <h1>Welcome !</h1>
             <p>Login to Admin Panel</p>
-            <input placeholder="Username" type="text" name="username">
-            <input placeholder="Password" type="password" name="password">
+            <input type="text" placeholder="Username" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username" fdprocessedid="2vqx86">
+            <input type="password" placeholder="Password" name="password" autocomplete="current-password" required="" id="id_password" fdprocessedid="lcfu2i">
             <button type="submit">Submit</button>
         </form>
     </div>
+
+    {% include "backend/alert.html" %}
   
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>

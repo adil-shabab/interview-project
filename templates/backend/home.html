@@ -25,15 +25,15 @@
         <li>
             <i class='bx bxs-calendar-check' ></i>
             <span class="text">
-                <h3>1020</h3>
-                <p>New Order</p>
+                <h3>{{products_count}}</h3>
+                <p>Total Products</p>
             </span>
         </li>
         <li>
             <i class='bx bxs-group' ></i>
             <span class="text">
-                <h3>2834</h3>
-                <p>Visitors</p>
+                <h3>{{users_count}}</h3>
+                <p>Total Users</p>
             </span>
         </li>
     </ul>
@@ -48,17 +48,24 @@
                 Actions
             </div>
         </div>
+
+        {% for x in products %}        
         <div class="product">
-            <div class="id">1</div>
-            <div class="name">Green Car</div>
-            <div class="price">&#8377; 2500</div>
+            <div class="id">{{forloop.counter}}</div>
+            <div class="name">{{x.name}}</div>
+            <div class="price">&#8377; {{x.price}}</div>
             <div class="actions">
-                <i class='bx bx-edit'></i>
-                <i class='bx bxs-trash-alt'></i>
+                <a href="{% url 'edit-product' x.id %}"><i class='bx bx-edit'></i></a>
+                <a href="{% url 'delete-product' x.id %}"><i class='bx bxs-trash-alt'></i></a>
             </div>
         </div>
+        {% endfor %}
     </div>
 
     
 </main>
+
+<script>
+    document.getElementById('dash_board').classList.add('active')
+</script>
 {% endblock content %}

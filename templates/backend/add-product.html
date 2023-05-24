@@ -23,22 +23,23 @@
 
     
 
-    <form action="" class="product_form">
+    <form action="{% url 'add-product' %}" method="POST" enctype="multipart/form-data" class="product_form">
+        {% csrf_token %}
         <div class="input_div name">
             <label for="">Product Name</label>
-            <input type="text">
+            {{form.name}}
         </div>
         <div class="input_div price">
             <label for="">Product Price</label>
-            <input type="number">
+            {{form.price}}
         </div>
         <div class="img-box">
             <div style="background: url('https://gplvilla.com/wp-content/uploads/image-placeholder.png');" id="imagePreview"></div>
-            <input id="imageUpload" type="file">
+            <input type="file" name="photo" accept="image/*" required="" id="id_photo">
         </div>
         <div class="input_div description">
             <label for="">Product Description</label>
-            <textarea></textarea>
+            {{form.description}}
         </div>
 
         <button type="submit">Submit</button>
@@ -46,4 +47,8 @@
 
     
 </main>
+
+<script>
+    document.getElementById('add_product').classList.add('active')
+</script>
 {% endblock content %}
