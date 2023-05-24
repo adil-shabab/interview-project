@@ -1,0 +1,49 @@
+{% extends "backend/base.html" %}
+{% load static %}
+{% block content %}
+<main>
+    <div class="head-title">
+        <div class="left">
+            <h1>Dashboard</h1>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Add New Product</a>
+                </li>
+                <li><i class='bx bx-chevron-right' ></i></li>
+                <li>
+                    <a class="active" href="#">Add Products</a>
+                </li>
+            </ul>
+        </div>
+        <a href="#" class="btn-download">
+            <i class='bx bxs-cloud-download' ></i>
+            <span class="text">Download PDF</span>
+        </a>
+    </div>
+
+    
+
+    <form action="" class="product_form">
+        <div class="input_div name">
+            <label for="">Product Name</label>
+            <input type="text">
+        </div>
+        <div class="input_div price">
+            <label for="">Product Price</label>
+            <input type="number">
+        </div>
+        <div class="img-box">
+            <div style="background: url('https://gplvilla.com/wp-content/uploads/image-placeholder.png');" id="imagePreview"></div>
+            <input id="imageUpload" type="file">
+        </div>
+        <div class="input_div description">
+            <label for="">Product Description</label>
+            <textarea></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    
+</main>
+{% endblock content %}

@@ -40,3 +40,11 @@ def user_logout(request):
 def admin_home(request):
     return render(request, 'backend/home.html')
 
+def admin_login(request):
+    return render(request, 'backend/login.html')
+
+
+
+def add_product(request):
+    return render(request, 'backend/add-product.html')
+

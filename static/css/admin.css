@@ -590,3 +590,122 @@ body {
 		min-width: 420px;
 	}
 }
+
+
+
+
+
+.products{
+	background: white;
+	width: 80%;
+	margin: auto;
+	margin-top: 30px;
+	padding: 25px 15px;
+	border-radius: 10px;
+}
+.products .product, .products .head{
+	display: flex;
+	margin-top: 15px;
+	padding: 20px 0px;
+	border-bottom: 1px solid rgb(205, 205, 205);
+}
+.products .product:last-child{
+	border-bottom: none;
+}
+.products .head{
+	font-weight: bold;
+	font-size: 18px;
+}
+.products .id{
+	width: 20%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.products .name{
+	width: 30%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.products .price{
+	width: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.products .actions{
+	width: 25%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.products .actions i{
+	font-size: 20px;
+	color: black;
+	margin-right: 8px;
+}
+
+
+
+
+.product_form{
+	margin-top: 80px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.product_form .input_div{
+	width: 50%;
+	margin-bottom: 25px;
+	padding: 0px 25px;
+	position: relative;
+}
+.product_form input, .product_form textarea{
+	width: 100%;
+	height: 45px;
+	border: 1px solid rgb(216, 216, 216);
+	border-radius: 5px;
+	outline: none;
+	background: #eeeeee;
+	padding: 8px 0px 0px 10px;
+}
+.product_form label{
+	position: absolute;
+	width: fit-content;
+	padding: 0px 10px;
+	top: -5px;
+	left: 40px;
+	font-size: 11px;
+	background: #eeeeee;
+}
+.product_form .description{
+	width: 65%;
+}
+.product_form .description textarea{
+	height: 220px;
+	padding: 20px ;
+}
+.product_form .img-box{
+	width: 35%;
+	padding: 0px 25px 0px 10px;
+}
+.product_form .img-box img{
+	max-width: 100%;
+	width: 100%;
+	height: 170px;
+	object-fit: cover;
+}
+#imagePreview{
+	height: 176px;
+    background-size: cover !important;
+	background-position: center !important;
+}
+.product_form button{
+	padding: 15px 80px;
+	cursor: pointer;
+    background: #3C91E6;
+	color: white;
+    outline: none;
+    border: 1px solid rgb(255, 255, 255);
+    margin: auto;
+}
