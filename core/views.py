@@ -8,33 +8,40 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def home(request):
     products = Product.objects.all()
-    context={'products': products}
+    cart_items = Cart.objects.filter(user=request.user)
+    cart_count = sum(item.quantity for item in cart_items)
+    context={'products': products, 'cart_count': cart_count}
     return render(request, 'frontend/home.html', context)
 
 
 
-@login_required
+@login_required(login_url='login')
 def cart(request):
     cart_items = Cart.objects.filter(user=request.user)
-    total_quantity = sum(item.quantity for item in cart_items)
-    context = {'cart_items': cart_items, 'total_quantity': total_quantity}
-    return render(request, 'cart/cart.html', context)
+    cart_count = sum(item.quantity for item in cart_items)
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
+    cart_count_without_quantity = Cart.objects.filter(user=request.user).count()
+    context = {'total_price': total_price, 'cart_items': cart_items, 'cart_count': cart_count, 'cart_count_without_quantity':cart_count_without_quantity}
+    return render(request, 'frontend/cart.html', context)
 
-@login_required
+@login_required(login_url='login')
 def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
     cart_item, created = Cart.objects.get_or_create(user=request.user, product=product)
     cart_item.quantity += 1
     cart_item.save()
-    return redirect('cart')
+    alert.success(request, 'Product added to Cart')
+    return redirect('home')
 
-@login_required
+@login_required(login_url='login')
 def remove_from_cart(request, cart_item_id):
     cart_item = Cart.objects.get(id=cart_item_id)
     cart_item.quantity -= 1
     if cart_item.quantity <= 0:
         cart_item.delete()
+        alert.success(request, 'Product removed from Cart')
     else:
+        alert.success(request, 'Product Quantity decreased')
         cart_item.save()
     return redirect('cart')
 

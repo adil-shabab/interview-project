@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-  <title>Title</title>
+  <title>Home</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,7 +47,7 @@
                         <h5 class="name">{{x.name}}</h5>
                         <p class="description">{{x.description}}</p>
                         <p class="price">&#8377; {{x.price}}</p>
-                        <a href=""><button class="styled_btn">Add to Cart</button></a>
+                        <a href="{% url 'add-to-cart' x.id %}"><button class="styled_btn">Add to Cart</button></a>
                     </div>
                     </div>
                 </div>
@@ -60,6 +60,7 @@
 
 
   {% include "frontend/footer.html" %}
+  {% include "backend/alert.html" %}
 
   <script src="{% static 'js/script.js' %}"></script>
   <!-- Bootstrap JavaScript Libraries -->

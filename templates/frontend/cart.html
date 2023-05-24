@@ -1,0 +1,92 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <title>Cart</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  
+  <!-- fontawesome cdn  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    {% include "frontend/navbar.html" %}
+
+
+  <main>
+
+    <div class="banner">
+      <div class="container">
+        <h1 class="heading">Every purchase will be made with <span>Pleasure</span></h1>
+        <img src="{% static 'img/banner.png' %}" alt="" class="img-fluid">
+      </div>
+    </div>
+
+
+    <div class="container">
+        <div class="carts">
+            <div class="cart head">
+                <div class="row">
+                    <div class="col-1 id">ID</div>
+                    <div class="col-3 name">Name</div>
+                    <div class="col-2 quantity">Quantity</div>
+                    <div class="col-2 image">Image</div>
+                    <div class="col-2 price">Price</div>
+                    <div class="col-2 actions">Actions</div>
+                </div>
+            </div>
+            {% for x in cart_items %}  
+            <div class="cart">
+                <div class="row">
+                    <div class="col-1 id">{{forloop.counter}}</div>
+                    <div class="col-3 name">{{x.product.name}}</div>
+                    <div class="col-2 quantity">{{x.quantity}}</div>
+                    <div class="col-2 image"><img src="{{x.product.photo.url}}" alt="" class="img-fluid"></div>
+                    <div class="col-2 price">&#8377; {{x.product.price}}</div>
+                    <div class="col-2 actions">
+                        <a href="{% url 'remove-from-cart' x.id %}"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}            
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                <h4 class="sm-txt">Total Product in Cart : {{cart_count_without_quantity}}</h4>
+            </div>
+            <div class="col-4">
+                <h4 class="sm-txt">Total Quanitiy in Cart : {{cart_count}}</h4>
+            </div>
+            <div class="col-4">
+                <h4 class="sm-txt">Total Price : {{total_price}}</h4>
+            </div>
+        </div>
+   </div>
+
+  </main>
+
+
+  {% include "frontend/footer.html" %}
+  {% include "backend/alert.html" %}
+
+  <script src="{% static 'js/script.js' %}"></script>
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+</body>
+
+</html>
