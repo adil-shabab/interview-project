@@ -16,7 +16,7 @@
         <div class="col-md-5">
             <form action="{% url 'register' %}" method="POST" class="form_section">
                 {% csrf_token %}
-                <h5 class="signup_txt">Already have an account? <a href="">Login Now</a></h5>
+                <h5 class="signup_txt">Already have an account? <a href="{% url 'login' %}">Login Now</a></h5>
                 <h3 class="heading">Welcome</h3>
                 <p class="description">Create a new account with us!</p>
 
