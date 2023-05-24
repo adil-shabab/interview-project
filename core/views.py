@@ -7,7 +7,37 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(request):
-    return render(request, 'frontend/home.html')
+    products = Product.objects.all()
+    context={'products': products}
+    return render(request, 'frontend/home.html', context)
+
+
+
+@login_required
+def cart(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    total_quantity = sum(item.quantity for item in cart_items)
+    context = {'cart_items': cart_items, 'total_quantity': total_quantity}
+    return render(request, 'cart/cart.html', context)
+
+@login_required
+def add_to_cart(request, product_id):
+    product = Product.objects.get(id=product_id)
+    cart_item, created = Cart.objects.get_or_create(user=request.user, product=product)
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('cart')
+
+@login_required
+def remove_from_cart(request, cart_item_id):
+    cart_item = Cart.objects.get(id=cart_item_id)
+    cart_item.quantity -= 1
+    if cart_item.quantity <= 0:
+        cart_item.delete()
+    else:
+        cart_item.save()
+    return redirect('cart')
+
 
 
     

@@ -12,3 +12,29 @@ if(password_input!=null){
         }
     }))
 }
+
+
+
+function myFunction() {
+    var input, filter, parent, childs, name, i, txtValue;
+    input = document.getElementById("search__input");
+    filter = input.value.toUpperCase();
+    parent = document.querySelectorAll(".parent_product");
+    childs = document.querySelectorAll(".each-product");
+      
+    for (i = 0; i < childs.length; i++) {
+        name = childs[i].querySelector('.name');
+        txtValue = name.textContent || name.innerText;
+        
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            childs[i].style.display = "";
+        } else {
+            childs[i].style.display = "none";
+        }
+    }
+}
+
+
+if(document.getElementById('search__input') != null){
+  document.getElementById('search__input').addEventListener('input', myFunction)
+}
