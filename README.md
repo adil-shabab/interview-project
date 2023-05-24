@@ -2,6 +2,18 @@
 
 Interview Project (Novindus Technologies)
 
+get it locally
+
+virtualenv env
+cd env
+cd scripts
+activate
+cd ../..
+git clone https://github.com/adil-shabab/interview-project.git
+cd interview-project
+pip install -r requirements.txt
+python manage.py runserver
+
 ![image](https://github.com/adil-shabab/interview-project/assets/101416092/9640f72c-3cd9-4df7-9000-bfa37aca29c2)
 ![image](https://github.com/adil-shabab/interview-project/assets/101416092/465d7f0e-9f99-4960-8fb2-ef900c0c9378)
 ![image](https://github.com/adil-shabab/interview-project/assets/101416092/cc2feec1-af18-4b51-a2ed-2fdf7bfe4366)
