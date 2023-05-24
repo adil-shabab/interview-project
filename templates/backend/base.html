@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="{% static 'css/admin.css' %}">
+
+	<title>Dashboard</title>
+</head>
+<body>
+
+
+	{% include "backend/sidebar.html" %}
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		
+        {% include "backend/navbar.html" %}
+
+		{% block content %}
+        
+        {% endblock content %}
+		
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="{% static 'js/admin.js' %}"></script>
+</body>
+</html>
