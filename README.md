@@ -28,6 +28,8 @@ cd interview-project
 pip install -r requirements.txt
 
 
+create super user this code : python manage.py createsuperuser
+
 python manage.py runserver
 
 ![image](https://github.com/adil-shabab/interview-project/assets/101416092/9640f72c-3cd9-4df7-9000-bfa37aca29c2)
